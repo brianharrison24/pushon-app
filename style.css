@@ -1,0 +1,269 @@
+html { scroll-behavior: smooth; }
+
+/* GLOBAL STYLES */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background: #fff; color: #000; overflow-x: hidden; }
+
+/* --- UPDATED MAIN NAV --- */
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 5%; 
+    position: sticky; 
+    top: 0; 
+    background: #fff; 
+    z-index: 1000; 
+    width: 100%;
+    /* Prevents nav from expanding beyond viewport */
+    box-sizing: border-box; 
+}
+
+.logo { 
+    font-size: 1.1rem; /* Slightly smaller for better fit */
+    font-weight: 900; 
+    letter-spacing: -1px; 
+    flex-shrink: 0; /* CRITICAL: Stops logo from getting squashed */
+    margin-right: 10px;
+}
+
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    gap: 10px; /* Reduced gap to prevent overflow */
+    margin: 0;
+    padding: 0;
+    /* Forces links to stay in a row and handle their own space */
+    flex-wrap: nowrap; 
+    justify-content: flex-end;
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #000; 
+    font-weight: 700; 
+    /* Use 'vw' or smaller 'rem' for fluid scaling */
+    font-size: 0.68rem; 
+    white-space: nowrap; 
+    text-transform: uppercase; /* Makes smaller text easier to read */
+    transition: 0.2s;
+}
+
+/* --- THE OVERLAP KILLER (Specific Mobile Fix) --- */
+@media (max-width: 480px) {
+    nav {
+        padding: 15px 3%; /* More room on the edges */
+    }
+    
+    .nav-links {
+        gap: 6px; /* Super tight gap for small phones */
+    }
+    
+    .nav-links a {
+        font-size: 10px; /* Forces a very small but readable size */
+        letter-spacing: -0.3px; /* Squeezes letters slightly to save space */
+    }
+}
+
+/* HERO SECTION WITH MUSCLE BROS BANNER */
+#about { position: relative; height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; text-align: center; background: #000; }
+.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.6; z-index: 1; }
+.hero-content { position: relative; z-index: 2; }
+.hero-content h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.hero-content p { font-size: 1.1rem; font-weight: 400; margin-bottom: 30px; }
+
+/* TRAINING SECTION FIXES */
+.train-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; align-items: stretch; }
+
+.train-card { 
+    position: relative; height: 550px; border-radius: 20px; overflow: hidden; 
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* IMAGE MAPPING FROM YOUR FOLDER */
+.t1 { background-image: url('assets/upperlower.jpg'); }
+.t2 { background-image: url('assets/ppl.jpg'); }
+.t3 { background-image: url('assets/brossplit.jpg'); }
+.t4 { background-image: url('assets/fullbody.jpg'); }
+
+/* THE FROSTED OVERLAY - Fixed Alignment */
+.train-info { 
+    background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    padding: 25px 15px; text-align: center; min-height: 220px; /* This keeps them all the same height */
+    display: flex; flex-direction: column; justify-content: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.train-tags { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.train-tags span { background: #fff; color: #000; padding: 4px 10px; border-radius: 5px; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; }
+
+.train-info h3 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.train-info p { font-size: 0.75rem; line-height: 1.4; color: rgba(255,255,255,0.8); margin: 0; }
+
+/* MOBILE FIX */
+@media (max-width: 1024px) { .train-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .train-grid { grid-template-columns: 1fr; } .train-card { height: 480px; } }
+
+/* MEALS SECTION - KEEPING YOUR IMAGES */
+#meals { padding: 40px 8%; background: #fff; }
+#meals h2 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; }
+.meal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.m-card { position: relative; min-height: 220px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 20px; background-size: cover; background-position: center; color: #fff; overflow: hidden; }
+.m-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); z-index: 1; }
+.m-card h3 { position: relative; z-index: 2; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; width: 80%; }
+.m-card p { position: relative; z-index: 2; font-size: 0.75rem; font-weight: 400; opacity: 0.8; line-height: 1.3; margin: 0; }
+
+/* SUPPLEMENTS SECTION - FIXED TO MATCH */
+#supplements { padding: 40px 8% 80px; background: #fff; }
+#supplements h2 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; }
+.supp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.s-card { position: relative; min-height: 220px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 20px; background-size: cover; background-position: center; color: #fff; overflow: hidden; }
+.s-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); z-index: 1; }
+.s-card h3 { position: relative; z-index: 2; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+.s-card p { position: relative; z-index: 2; font-size: 0.75rem; font-weight: 400; opacity: 0.8; line-height: 1.3; margin: 0; }
+
+/* ALL IMAGE LINKS - MEALS + NEW SUPPLEMENTS */
+.m1 { background-image: url('assets/meal1.jpg'); } .m2 { background-image: url('assets/meal2.jpg'); } .m3 { background-image: url('assets/meal3.jpg'); } .m4 { background-image: url('assets/meal4.jpg'); }
+.m5 { background-image: url('assets/meal5.jpg'); } .m6 { background-image: url('assets/meal6.jpg'); } .m7 { background-image: url('assets/meal7.jpg'); } .m8 { background-image: url('assets/meal8.jpg'); }
+.s1 { background-image: url('assets/preworkout.JPG'); } .s2 { background-image: url('assets/wheyprotein.jpg'); } .s3 { background-image: url('assets/creatine.JPG'); } .s4 { background-image: url('assets/mass.JPG'); } .s5 { background-image: url('assets/fluidcreatine.JPG'); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) { .meal-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .meal-grid, .supp-grid { grid-template-columns: 1fr; } }
+/* Mobile Tweak */
+@media (max-width: 768px) { .extra-container { grid-template-columns: 1fr; } }
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    #myapp { padding: 50px 20px; }
+    #myapp h2 { font-size: 2rem; }
+}
+
+/* CALCULATOR */
+#macrocalculator { max-width: 650px; margin: 80px auto; padding: 0 20px; }
+.input-group { margin-bottom: 50px; position: relative; }
+.input-group h3, .input-group label { font-weight: 900; text-transform: uppercase; font-size: 0.95rem; margin-bottom: 20px; letter-spacing: 0.5px; }
+
+/* RADIO BUTTONS */
+.radio-container { display: flex; align-items: center; position: relative; padding-left: 40px; margin-bottom: 15px; cursor: pointer; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; color: #444; }
+.radio-container input { position: absolute; opacity: 0; }
+.checkmark { position: absolute; left: 0; height: 24px; width: 24px; background-color: #f2f2f2; border-radius: 50%; }
+.radio-container input:checked ~ .checkmark { background-color: #000; border: 4px solid #f2f2f2; }
+
+/* SLIDERS & BUBBLES */
+.range-container { position: relative; width: 100%; margin-top: 35px; }
+.slider { -webkit-appearance: none; width: 100%; height: 2px; background: #e0e0e0; outline: none; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: #000; border-radius: 50%; cursor: pointer; border: none; }
+.slider-labels { display: flex; justify-content: space-between; color: #bbb; font-size: 0.75rem; font-weight: 700; margin-top: 8px; }
+
+.value-bubble { position: absolute; top: -35px; background: #fff; color: #000; padding: 5px 10px; border-radius: 4px; font-weight: 900; font-size: 0.85rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transform: translateX(-50%); pointer-events: none; }
+.value-bubble::after { content: ""; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #fff; }
+
+/* BUTTONS */
+.cta-btn { background: #000; color: #fff; padding: 18px 45px; border: none; border-radius: 8px; font-weight: 900; text-transform: uppercase; cursor: pointer; width: 100%; transition: 0.2s; }
+.cta-btn:hover { background: #333; transform: translateY(-2px); }
+
+/* RESULTS (Right Aligned) */
+#macro-result { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 30px; text-align: right; display: none; }
+.result-item { margin-bottom: 20px; }
+.result-label { font-size: 0.8rem; font-weight: 700; color: #777; text-transform: capitalize; }
+.result-value { font-size: 1.4rem; font-weight: 900; color: #000; }
+
+/* --- GLOBAL RESPONSIVE FIXES --- */
+
+@media (max-width: 900px) {
+    nav { 
+        display: flex;
+        flex-direction: column; /* Stacks logo above links */
+        align-items: flex-start; /* Forces the logo to the left */
+        gap: 15px; 
+        padding: 15px 5%;
+        background: #fff;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+        font-weight: 900;
+        /* No margin needed, flex-start handles the alignment */
+    }
+
+    .nav-links { 
+        width: 100%; /* Spans the full width of the phone */
+        display: flex;
+        justify-content: space-between; /* Spreads links out evenly across the row */
+        gap: 5px; 
+        padding: 0;
+    }
+
+    .nav-links a { 
+        font-size: 10px; /* Small font to ensure no overlapping on tiny screens */
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+}
+
+/* Extra small screens (iPhone SE etc.) */
+@media (max-width: 380px) {
+    .nav-links a {
+        font-size: 0.65rem;
+        gap: 8px;
+    }
+}
+
+/* Tablet & Smaller Desktop Adjustments */
+@media (max-width: 1100px) {
+    .train-grid, .meal-grid { grid-template-columns: repeat(2, 1fr); }
+    #training, #meals, #supplements { padding: 50px 5%; }
+}
+
+/* Mobile Specific (iPhone XR/Pro Max dimensions) */
+@media (max-width: 600px) {
+    /* Hero Section scaling */
+    #about { height: 70vh; }
+    .hero-content h1 { font-size: 2.8rem; line-height: 1.1; }
+    .hero-content p { font-size: 0.9rem; margin-bottom: 20px; }
+    
+    /* Stacking all grids to 1 column */
+    .train-grid, .meal-grid, .supp-grid { grid-template-columns: 1fr; gap: 20px; }
+    
+    /* Card Height Adjustments for Mobile */
+    .train-card { height: 400px; }
+    .m-card, .s-card { min-height: 200px; }
+    
+    /* Section Headers */
+    #training h2, #meals h2, #supplements h2 { font-size: 1.6rem; text-align: center; margin-bottom: 25px; }
+
+    /* Calculator Form Scaling */
+    #macrocalculator { margin: 40px auto; }
+    .input-group h3 { font-size: 0.8rem; }
+    .radio-container { font-size: 0.75rem; }
+}
+
+/* Fix for Ultra-Wide Screens */
+@media (min-width: 1800px) {
+    .train-grid, .meal-grid, .supp-grid { max-width: 1600px; margin: 0 auto; }
+}
+
+/* REFINED TRAINING HEADER: MATCHES MEAL IDEAS WITH PROPER SPACE */
+#training h2 { 
+    font-size: clamp(2.2rem, 6vw, 2rem) !important; /* Balanced size to match Meals section */
+    font-weight: 900 !important; 
+    color: #000 !important; 
+    text-transform: uppercase !important; 
+    letter-spacing: -1px !important; 
+    line-height: 1.2 !important; 
+    margin-top: 60px !important; /* Adds the space you requested above the title */
+    margin-bottom: 35px !important;
+    margin-left: 8% !important; /* Space between title and cards */
+    text-align: left !important;
+}
+
+/* MOBILE REFINEMENT */
+@media (max-width: 600px) {
+    #training h2 { 
+        font-size: 2rem !important; 
+        margin-top: 40px !important;
+        letter-spacing: -0.5px !important;
+    }
+}
