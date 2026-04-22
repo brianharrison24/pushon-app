@@ -1,141 +1,446 @@
-html { scroll-behavior: smooth; }
+/* =========================================
+   1. GLOBAL SETTINGS 
+   (Dito nakalagay ang basic resets at font)
+   ========================================= */
+   html { scroll-behavior: smooth; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+   * { 
+       margin: 0; 
+       padding: 0; 
+       box-sizing: border-box; 
+   }
+   
+   body { 
+       font-family: 'Montserrat', sans-serif; 
+       background: #fff; 
+       color: #000; 
+       overflow-x: hidden; 
+   }
+   
+   /* =========================================
+      2. NAVIGATION BAR
+      (Ang menu sa itaas ng website)
+      ========================================= */
+   nav { 
+       display: flex; 
+       justify-content: space-between; 
+       align-items: center; 
+       padding: 15px 8%; 
+       position: sticky; 
+       top: 0; 
+       background: #fff; 
+       z-index: 1000; 
+       width: 100%;
+       box-sizing: border-box; 
+   }
+   
+   .logo { 
+       font-size: 1.1rem; 
+       font-weight: 900; 
+       letter-spacing: -1px; 
+       flex-shrink: 0; 
+       margin-right: 10px;
+   }
+   
+   .nav-links { 
+       list-style: none; 
+       display: flex; 
+       gap: 25px; 
+       margin: 0;
+       padding-right: 30px;
+       flex-wrap: nowrap; 
+       justify-content: flex-end;
+   }
+   
+   .nav-links a { 
+       text-decoration: none; 
+       color: #000; 
+       font-weight: 700; 
+       font-size: 0.68rem; 
+       white-space: nowrap; 
+       text-transform: uppercase; 
+       transition: 0.2s;
+   }
+   
+   /* Mobile Nav Adjustments */
+   @media (max-width: 480px) {
+       nav { padding: 15px 3%; }
+       .nav-links {
+            padding-right: 0;
+            gap: 8px;
+       }
+   }
+   
+ /* =========================================
+   3. HERO / ABOUT SECTION
+========================================= */
 
-body { font-family: 'Montserrat', sans-serif; background: #fff; color: #000; overflow-x: hidden; }
-
-nav { 
+#about { 
+    position: relative; 
+    height: 85vh; 
+    width: 100%; 
+  
     display: flex; 
-    justify-content: space-between; 
     align-items: center; 
-    padding: 15px 5%; 
-    position: sticky; 
+    justify-content: center; 
+  
+    overflow: hidden; 
+    text-align: center; 
+  
+    color: #fff; 
+    background: #000; 
+  }
+  
+  .hero-bg { 
+    position: absolute; 
     top: 0; 
-    background: #fff; 
-    z-index: 1000; 
-    width: 100%;
-    box-sizing: border-box; 
-}
-
-.logo { 
-    font-size: 1.1rem; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+  
+    background-size: cover; 
+    background-position: center; 
+  
+    opacity: 0.6; 
+    z-index: 1; 
+  }
+  
+  .hero-content { 
+    position: relative; 
+    z-index: 2; 
+  }
+  
+  .hero-content h1 { 
+    font-size: clamp(3rem, 10vw, 5rem); 
     font-weight: 900; 
-    letter-spacing: -1px; 
-    flex-shrink: 0; 
-    margin-right: 10px;
-}
-
-.nav-links { 
-    list-style: none; 
-    display: flex; 
-    gap: 10px; 
-    margin: 0;
-    padding: 0;
-    flex-wrap: nowrap; 
-    justify-content: flex-end;
-}
-
-.nav-links a { 
-    text-decoration: none; 
-    color: #000; 
-    font-weight: 700; 
-    font-size: 0.68rem; 
-    white-space: nowrap; 
     text-transform: uppercase; 
-    transition: 0.2s;
+    letter-spacing: 2px; 
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5); 
+  }
+  
+  .hero-content p { 
+    font-size: 1.1rem; 
+    margin-bottom: 30px; 
+  }
+  
+  
+  /* =========================================
+     4. TRAINING PROGRAMS SECTION
+  ========================================= */
+  
+  .train-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; 
+  }
+  
+  /* CARD */
+  .train-card { 
+    position: relative; 
+    height: 550px; 
+    border-radius: 20px; 
+    overflow: hidden; 
+  
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end;
+  
+    background-size: cover; 
+    background-position: center; 
+  
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* BACKGROUND IMAGES */
+  .t1 { background-image: url('assets/upperlower.jpg'); }
+  .t2 { background-image: url('assets/ppl.jpg'); }
+  .t3 { background-image: url('assets/brossplit.jpg'); }
+  .t4 { background-image: url('assets/fullbody.jpg'); }
+  
+  
+  /* =========================================
+     GLASS / TEXT AREA (FIXED - NO HEAVY BLUR)
+  ========================================= */
+  
+  .train-info { 
+    padding: 25px 15px; 
+    text-align: center; 
+  
+    min-height: 220px; 
+  
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+  
+    /* LIGHT GRADIENT ONLY (NO FOG EFFECT) */
+    background: linear-gradient(
+      to bottom, 
+      rgba(0,0,0,0.2) 0%, 
+      rgba(0,0,0,0.6) 100%
+    );
+  
+    /* REMOVE HEAVY BLUR */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  
+  
+  /* TITLE */
+  .train-info h3 { 
+    font-size: 1.3rem; 
+    font-weight: 900; 
+    color: #ffffff; 
+    margin-bottom: 12px; 
+    text-transform: uppercase;
+  
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  
+  
+  /* TAGS */
+  .train-tags { 
+    display: flex; 
+    justify-content: center; 
+    gap: 6px; 
+    flex-wrap: wrap; 
+    margin-bottom: 15px; 
+  }
+  
+  .train-tags span { 
+    background: #ffffff; 
+    color: #000000; 
+    padding: 4px 10px; 
+    border-radius: 4px; 
+    font-size: 0.6rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+  }
+  
+  
+  /* DESCRIPTION */
+  .train-info p { 
+    font-size: 0.75rem; 
+    color: #ffffff; 
+    line-height: 1.4;
+  
+    max-width: 90%;
+    margin: 0 auto;
+  
+    opacity: 0.95;
+  
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+  }
+  
+  
+  /* =========================================
+     HOVER EFFECT (OPTIONAL BUT CLEAN 🔥)
+  ========================================= */
+  
+  .train-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .train-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+  
+  
+  /* =========================================
+     RESPONSIVE (IMPORTANT)
+  ========================================= */
+  
+  @media (max-width: 1024px) {
+    .train-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .train-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .train-card {
+      height: 300px;
+    }
+  }
+  
+/* ==========================================================================
+   MEALS SECTION
+   ========================================================================== */
+   #meals { 
+    padding: 40px 8%; 
+    background: #fff; 
 }
 
-@media (max-width: 480px) {
-    nav { padding: 15px 3%; }
-    .nav-links { gap: 6px; }
-    .nav-links a { font-size: 10px; letter-spacing: -0.3px; }
+#meals h2 { 
+    font-size: 2rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin-bottom: 25px; 
 }
 
-#about { position: relative; height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; color: #fff; text-align: center; background: #000; }
-
-.hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.6; z-index: 1; }
-
-.hero-content { position: relative; z-index: 2; }
-
-.hero-content h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 900; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-
-.hero-content p { font-size: 1.1rem; font-weight: 400; margin-bottom: 30px; }
-
-.train-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; align-items: stretch; }
-
-.train-card { 
-    position: relative; height: 550px; border-radius: 20px; overflow: hidden; 
-    display: flex; flex-direction: column; justify-content: flex-end;
-    background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.1);
+.meal-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; 
 }
 
-.t1 { background-image: url('assets/upperlower.jpg'); }
-.t2 { background-image: url('assets/ppl.jpg'); }
-.t3 { background-image: url('assets/brossplit.jpg'); }
-.t4 { background-image: url('assets/fullbody.jpg'); }
-
-.train-info { 
-    background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    padding: 25px 15px; text-align: center; min-height: 220px; 
-    display: flex; flex-direction: column; justify-content: center;
-    border-top: 1px solid rgba(255,255,255,0.2);
+.m-card { 
+    position: relative; 
+    min-height: 220px; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    align-items: flex-start; 
+    padding: 20px; 
+    background-size: cover; 
+    background-position: center; 
+    color: #fff; 
+    overflow: hidden; 
 }
 
-.train-tags { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.m-card::after { 
+    content: ''; 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); 
+    z-index: 1; 
+}
 
-.train-tags span { background: #fff; color: #000; padding: 4px 10px; border-radius: 5px; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; }
+.m-card h3 { 
+    position: relative; 
+    z-index: 2; 
+    font-size: 0.9rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin-bottom: 4px; 
+    line-height: 1.2; 
+    width: 80%; 
+}
 
-.train-info h3 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+.m-card p { 
+    position: relative; 
+    z-index: 2; 
+    font-size: 0.75rem; 
+    font-weight: 400; 
+    opacity: 0.8; 
+    line-height: 1.3; 
+    margin: 0; 
+}
 
-.train-info p { font-size: 0.75rem; line-height: 1.4; color: rgba(255,255,255,0.8); margin: 0; }
-
-@media (max-width: 1024px) { .train-grid { grid-template-columns: repeat(2, 1fr); } }
-
-@media (max-width: 600px) { .train-grid { grid-template-columns: 1fr; } .train-card { height: 480px; } }
-
-#meals { padding: 40px 8%; background: #fff; }
-
-#meals h2 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; }
-
-.meal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-
-.m-card { position: relative; min-height: 220px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 20px; background-size: cover; background-position: center; color: #fff; overflow: hidden; }
-
-.m-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); z-index: 1; }
-
-.m-card h3 { position: relative; z-index: 2; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; width: 80%; }
-
-.m-card p { position: relative; z-index: 2; font-size: 0.75rem; font-weight: 400; opacity: 0.8; line-height: 1.3; margin: 0; }
-
-#supplements { padding: 40px 8% 80px; background: #fff; }
-
-#supplements h2 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; }
-
-.supp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-
-.s-card { position: relative; min-height: 220px; border-radius: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 20px; background-size: cover; background-position: center; color: #fff; overflow: hidden; }
-
-.s-card::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); z-index: 1; }
-
-.s-card h3 { position: relative; z-index: 2; font-size: 0.9rem; font-weight: 900; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
-
-.s-card p { position: relative; z-index: 2; font-size: 0.75rem; font-weight: 400; opacity: 0.8; line-height: 1.3; margin: 0; }
-
-.m1 { background-image: url('assets/meal1.jpg'); } .m2 { background-image: url('assets/meal2.jpg'); } .m3 { background-image: url('assets/meal3.jpg'); } .m4 { background-image: url('assets/meal4.jpg'); }
-.m5 { background-image: url('assets/meal5.jpg'); } .m6 { background-image: url('assets/meal6.jpg'); } .m7 { background-image: url('assets/meal7.jpg'); } .m8 { background-image: url('assets/meal8.jpg'); }
-.s1 { background-image: url('assets/preworkout.JPG'); } .s2 { background-image: url('assets/wheyprotein.jpg'); } .s3 { background-image: url('assets/creatine.JPG'); } .s4 { background-image: url('assets/mass.JPG'); } .s5 { background-image: url('assets/fluidcreatine.JPG'); }
+/* Meal Images - Matching your exact filenames */
+.m1 { background-image: url('assets/chicken&eggs.jpg'); }
+.m2 { background-image: url('assets/chicken&eggs2.jpg'); }
+.m3 { background-image: url('assets/shrimps&rice.jpg'); }
+.m4 { background-image: url('assets/meat-rice-broccoli.jpg'); }
+.m5 { background-image: url('assets/mix-highprotein.jpg'); }
+.m6 { background-image: url('assets/breakfastmeal.jpg'); }  
+.m7 { background-image: url('assets/breakfastmeal2.jpg'); }  
+.m8 { background-image: url('assets/lunchmeal.jpg'); }
+.m9 { background-image: url('assets/lunchmeal2.jpg'); }
+.m10 { background-image: url('assets/snack-meal.jpg'); }
+.m11 { background-image: url('assets/calorie-deficit-meal.jpg'); }   
+.m12 { background-image: url('assets/cheat-meal.jpg'); }      
+.m13 { background-image: url('assets/dinnermeal.jpg'); }
+.m14 { background-image: url('assets/preworkout-meal.jpg'); }
 
 @media (max-width: 1024px) { .meal-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .meal-grid { grid-template-columns: 1fr; } }
 
-@media (max-width: 600px) { .meal-grid, .supp-grid { grid-template-columns: 1fr; } }
 
-@media (max-width: 768px) { .extra-container { grid-template-columns: 1fr; } }
-
-@media (max-width: 768px) {
-    #myapp { padding: 50px 20px; }
-    #myapp h2 { font-size: 2rem; }
+/* ==========================================================================
+   SUPPLEMENTS SECTION
+   ========================================================================== */
+   #supplements { 
+    padding: 40px 8% 80px; 
+    background: #fff; 
 }
 
+#supplements h2 { 
+    font-size: 2rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin-bottom: 25px; 
+}
+
+.supp-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px; 
+}
+
+/* Link Wrapper styling to keep white text and remove underlines */
+.s-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.s-card { 
+    position: relative; 
+    min-height: 220px; 
+    border-radius: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    align-items: flex-start; 
+    padding: 20px; 
+    background-size: cover; 
+    background-position: center; 
+    color: #fff; 
+    overflow: hidden; 
+    transition: transform 0.3s ease;
+}
+
+.s-link:hover .s-card {
+    transform: scale(1.03);
+}
+
+.s-card::after { 
+    content: ''; 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)); 
+    z-index: 1; 
+}
+
+.s-card h3 { 
+    position: relative; 
+    z-index: 2; 
+    font-size: 0.9rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin-bottom: 4px; 
+    line-height: 1.2; 
+}
+
+.s-card p { 
+    position: relative; 
+    z-index: 2; 
+    font-size: 0.75rem; 
+    font-weight: 400; 
+    opacity: 0.8; 
+    line-height: 1.3; 
+    margin: 0; 
+}
+
+/* Supplement Images - Note .JPG vs .jpg sensitivity */
+.s1 { background-image: url('assets/preworkout.JPG'); } 
+.s2 { background-image: url('assets/wheyprotein.jpg'); } 
+.s3 { background-image: url('assets/creatine.JPG'); } 
+.s4 { background-image: url('assets/mass.JPG'); } 
+.s5 { background-image: url('assets/fluidcreatine.JPG'); }
+
+@media (max-width: 600px) { .supp-grid { grid-template-columns: 1fr; } }
+
+
+/* ==========================================================================
+   MACRO CALCULATOR SECTION
+   ========================================================================== */
 #macrocalculator { max-width: 650px; margin: 80px auto; padding: 0 20px; }
 
 .input-group { margin-bottom: 50px; position: relative; }
