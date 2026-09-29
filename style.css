@@ -331,21 +331,26 @@
     margin: 0; 
 }
 
-/* Meal Images - Matching your exact filenames */
-.m1 { background-image: url('assets/chicken&eggs.jpg'); }
-.m2 { background-image: url('assets/chicken&eggs2.jpg'); }
-.m3 { background-image: url('assets/shrimps&rice.jpg'); }
-.m4 { background-image: url('assets/meat-rice-broccoli.jpg'); }
-.m5 { background-image: url('assets/mix-highprotein.jpg'); }
-.m6 { background-image: url('assets/breakfastmeal.jpg'); }  
-.m7 { background-image: url('assets/breakfastmeal2.jpg'); }  
-.m8 { background-image: url('assets/lunchmeal.jpg'); }
-.m9 { background-image: url('assets/lunchmeal2.jpg'); }
-.m10 { background-image: url('assets/snack-meal.jpg'); }
-.m11 { background-image: url('assets/calorie-deficit-meal.jpg'); }   
-.m12 { background-image: url('assets/cheat-meal.jpg'); }      
-.m13 { background-image: url('assets/dinnermeal.jpg'); }
-.m14 { background-image: url('assets/preworkout-meal.jpg'); }
+
+.m1 { background-image: url('assets/m1.jpg'); }
+.m2 { background-image: url('assets/m2.jpg'); }
+.m3 { background-image: url('assets/m3.jpg'); }
+.m4 { background-image: url('assets/m4.jpg'); }
+.m5 { background-image: url('assets/m5.jpg'); }
+.m6 { background-image: url('assets/m6.jpg'); }
+.m7 { background-image: url('assets/m7.jpg'); }
+.m8 { background-image: url('assets/m8.jpg'); }
+.m9 { background-image: url('assets/m9.jpg'); }
+.m10 { background-image: url('assets/m10.jpg'); }
+.m11 { background-image: url('assets/m11.jpg'); }
+.m12 { background-image: url('assets/m12.jpg'); }
+.m13 { background-image: url('assets/m13.jpg'); }
+.m14 { background-image: url('assets/m14.jpg'); }
+.m15 { background-image: url('assets/m15.jpg'); }
+.m16 { background-image: url('assets/m16.jpg'); }
+.m17 { background-image: url('assets/m17.jpg'); }
+.m18 { background-image: url('assets/m18.jpg'); }
+.m19 { background-image: url('assets/m19.jpg'); }
 
 @media (max-width: 1024px) { .meal-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .meal-grid { grid-template-columns: 1fr; } }
